@@ -1,7 +1,4 @@
-import rpyc
-
-def showMe(message):
-  print "->", message
+import sys,rpyc
 
 def openAndPack(filename):
     #Open the passed file in read-binary mode
@@ -15,14 +12,24 @@ def recieveAndUnPack(binary, filename):
     file = open(filename, 'wb')
     file.write(binary)
 
-
-c = rpyc.connect("localhost", 18861)
+# Connect to RPyC with input ip, if no input
+#   ip then default to localhost.
+try:
+    c = rpyc.conect(sys.argv[3], 18861)
+except:
+    c = rpyc.connect("localhost", 18861)
 
 # In order to print the messages from others while the client thread
 # is waiting for keyboard input, start up a background listening thread.
 bgsrv = rpyc.BgServingThread(c)
 
-name = raw_input("Enter Your Name:")
+# Set client variables
+#   name          = user's name
+#   shareFolder   = path to folder with shared files
+#   receiveFolder = path to folder to store received files
+name            = raw_input("Enter Your Name:")
+shareFolder     = sys.argv[1]
+receiveFolder   = sys.argv[2]
 
 # Send the function to print a message to my screen to the server
 c.root.setCallback(showMe)
