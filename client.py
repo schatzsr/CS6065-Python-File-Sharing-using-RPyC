@@ -1,7 +1,4 @@
-import sys,os,rpyc
-
-def showSharedFiles(directory):
-  print os.listdir(directory)
+import sys,rpyc
 
 def openAndPack(filename):
     #Open the passed file in read-binary mode
@@ -9,7 +6,7 @@ def openAndPack(filename):
     file = open(filename, 'rb')
     str = file.read()
 
-def recieveAndUnpack(binary, filename):
+def receiveAndUnPack(binary, filename):
     #Open File to write to and write input
     #   binary to the new file
     file = open(filename, 'wb')
@@ -33,19 +30,13 @@ bgsrv = rpyc.BgServingThread(c)
 name            = raw_input("Enter Your Name:")
 shareFolder     = sys.argv[1]
 receiveFolder   = sys.argv[2]
-firstRun        = True
 
 # Send the function to print a message to my screen to the server
-c.root.setCallback(showSharedFiles)
+c.root.setCallback(showMe)
 
 while True:
-
-    if(firstRun):
-        print "Type 'ls' to show available files."
-        firstRun = False
-    something = raw_input()
-    if something == "ls":
-        c.root.say(shareFolder)
+  msg = raw_input()
+  c.root.say(name + ":" + msg)
 
 
 bgsrv.stop()
