@@ -13,8 +13,8 @@ class Service(rpyc.Service):
   def exposed_setCallback(self,showMe):
     c.setCallback(showMe)
 
-  def exposed_say(self, message):
-    c.say(message)
+  def exposed_say(self, shareFolder):
+    c.say(shareFolder)
 
 ''' A chat server class
   This stores a single state for all the clients
@@ -29,10 +29,10 @@ class ChatServer:
     self.callbacks = self.callbacks + [showMe]
 
   # Send that message to everyone's showMe method
-  def say(self, message):
+  def say(self, shareFolder):
     for fn in self.callbacks:
       try:  # Put in a try/except block just in case we lost net connection
-        fn(message)
+        fn(shareFolder)
       except:
         pass
 

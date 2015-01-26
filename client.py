@@ -1,4 +1,7 @@
-import sys,rpyc
+import sys,os,rpyc
+
+def showSharedFiles(directory):
+  print os.listdir(directory)
 
 def openAndPack(filename):
     #Open the passed file in read-binary mode
@@ -6,7 +9,7 @@ def openAndPack(filename):
     file = open(filename, 'rb')
     str = file.read()
 
-def recieveAndUnPack(binary, filename):
+def recieveAndUnpack(binary, filename):
     #Open File to write to and write input
     #   binary to the new file
     file = open(filename, 'wb')
@@ -15,7 +18,7 @@ def recieveAndUnPack(binary, filename):
 # Connect to RPyC with input ip, if no input
 #   ip then default to localhost.
 try:
-    c = rpyc.conect(sys.argv[3], 18861)
+    c = rpyc.connect(sys.argv[3], 18861)
 except:
     c = rpyc.connect("localhost", 18861)
 
@@ -30,13 +33,19 @@ bgsrv = rpyc.BgServingThread(c)
 name            = raw_input("Enter Your Name:")
 shareFolder     = sys.argv[1]
 receiveFolder   = sys.argv[2]
+firstRun        = True
 
 # Send the function to print a message to my screen to the server
-c.root.setCallback(showMe)
+c.root.setCallback(showSharedFiles)
 
 while True:
-  msg = raw_input()
-  c.root.say(name + ":" + msg)
+
+    if(firstRun):
+        print "Type 'ls' to show available files."
+        firstRun = False
+    something = raw_input()
+    if something == "ls":
+        c.root.say(shareFolder)
 
 
 bgsrv.stop()
