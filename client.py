@@ -4,8 +4,16 @@ def showMe(message):
   print "->", message
 
 def openAndPack(filename):
-    f = open(filename, 'rb')
-    pFile = f.read()
+    #Open the passed file in read-binary mode
+    #   and write the binary to a string.
+    file = open(filename, 'rb')
+    str = file.read()
+
+def recieveAndUnPack(binary, filename):
+    #Open File to write to and write input
+    #   binary to the new file
+    file = open(filename, 'wb')
+    file.write(binary)
 
 
 c = rpyc.connect("localhost", 18861)
