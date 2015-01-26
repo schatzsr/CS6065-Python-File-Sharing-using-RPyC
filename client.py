@@ -9,7 +9,7 @@ def openAndPack(filename):
     file = open(filename, 'rb')
     str = file.read()
 
-def recieveAndUnpack(binary, filename):
+def receiveAndUnpack(binary, filename):
     #Open File to write to and write input
     #   binary to the new file
     file = open(filename, 'wb')
