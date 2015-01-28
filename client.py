@@ -31,16 +31,27 @@ name            = raw_input("Enter Your Name:")
 shareFolder     = sys.argv[1]
 receiveFolder   = sys.argv[2]
 firstRun        = True
+connected       = False
 
 while True:
 
     if(firstRun):
         # Connect to RPyC with input ip, if no input
         #   ip then default to localhost.
-        try:
-            c = rpyc.connect(sys.argv[3], 18861)
-        except:
-            c = rpyc.connect("localhost", 18861)
+        if len(sys.argv) == 4:
+            try:
+                c = rpyc.connect(sys.argv[3], 18861)
+                connected = True
+            except:
+                print "Invalid IP Address. Please enter a valid address or start a Localhost"
+                break
+        elif len(sys.argv) == 3:
+            try:
+                c = rpyc.connect("localhost", 18861)
+                connected = True
+            except:
+                print "Localhost not found, please start a local server instance or enter a valid IP Address."
+                break
 
         # In order to print the messages from others while the client thread
         # is waiting for keyboard input, start up a background listening thread.
@@ -79,6 +90,6 @@ while True:
         #disconnect and remove user from the server
         print "You quitin' dis shit.....nah"
 
-
-bgsrv.stop()
-c.close()
+if connected:
+    bgsrv.stop()
+    c.close()
