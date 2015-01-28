@@ -27,15 +27,19 @@ Set client variables
    shareFolder   = path to folder with shared files
    receiveFolder = path to folder to store received files
 '''
-name            = raw_input("Enter Your Name:")
-shareFolder     = sys.argv[1]
-receiveFolder   = sys.argv[2]
-firstRun        = True
-connected       = False
+firstRun = True
+connected = False
 
 while True:
 
     if(firstRun):
+
+        shareFolder = sys.argv[1]
+        receiveFolder = sys.argv[2]
+        if not os.path.exists(shareFolder) or not os.path.exists(receiveFolder):
+            print "Please enter a valid share and/or receive directory"
+            break
+
         # Connect to RPyC with input ip, if no input
         #   ip then default to localhost.
         if len(sys.argv) == 4:
@@ -52,6 +56,8 @@ while True:
             except:
                 print "Localhost not found, please start a local server instance or enter a valid IP Address."
                 break
+
+        name = raw_input("Enter Your Name:")
 
         # In order to print the messages from others while the client thread
         # is waiting for keyboard input, start up a background listening thread.

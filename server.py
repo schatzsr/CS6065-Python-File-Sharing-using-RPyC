@@ -96,14 +96,14 @@ class FileshareServer:
 class UserFileShare:
     def __init__(self, name):
         print name
-        self.name       = name
-        self.fileNames  = []
-        self.fileBins   = []
+        self.name = name
+        self.fileNames = []
+        self.fileBins = []
         print "User " + name + "'s files have been added."
 
     def setSharedFiles(self, fileNames, fileBins):
-        self.fileNames  = fileNames
-        self.fileBins   = fileBins
+        self.fileNames = fileNames
+        self.fileBins = fileBins
 
     def getName(self):
         return self.name
