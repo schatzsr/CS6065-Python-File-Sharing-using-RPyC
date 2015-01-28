@@ -30,8 +30,8 @@ class Service(rpyc.Service):
 '''
 class FileshareServer:
     def __init__(self):
-        self.callbacks  = []
-        self.users      = []
+        self.callbacks = []
+        self.users = []
 
     # Append the function call (remote) to the list of clients
     def setCallback(self, showMe):
