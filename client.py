@@ -91,10 +91,8 @@ while True:
             print "File Retrieve Successful"
         except TypeError:
             print "File Retrieve Failed - please ensure valid inputs"
-
     elif userInput == "q":
-        #disconnect and remove user from the server
-        print "You quitin' dis shit.....nah"
+        break
 
 if connected:
     bgsrv.stop()
