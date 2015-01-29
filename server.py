@@ -1,3 +1,9 @@
+# Intro to Cloud Computing
+# Project 1: Python File Sharing using RPyC (RPC)
+# Authors: Anthony Kleiser, Sean Schatzman
+# https://docs.google.com/document/d/1_ITW-OmGvtsFgbbr-lJQHCyihWIjZMHnFu85CWQSTzo/edit
+
+
 import rpyc
 
 ''' Class to store all external function calls
