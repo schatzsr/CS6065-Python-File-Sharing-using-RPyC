@@ -68,21 +68,25 @@ class FileshareServer:
                 uIndex += 1
 
     def showFiles(self):
-        ucount = 0
-        rtrn = "User and Files\n"
-        for user in self.users:
-            fcount = 0
-            name = user.getName()
-            rtrn += str(ucount) + ": " + name + "\n"
-            ucount += 1
-            for fileN in user.getFileNames():
-                rtrn += "   " + str(fcount) + ":" + fileN + "\n"
-                fcount += 1
-        if ucount == 0:
-            return "No users present"
-        else:
-            print rtrn
-            return rtrn
+        try:
+            ucount = 0
+            rtrn = "User and Files\n"
+            for user in self.users:
+                fcount = 0
+                name = user.getName()
+                rtrn += str(ucount) + ": " + name + "\n"
+                ucount += 1
+                for fileN in user.getFileNames():
+                    rtrn += "   " + str(fcount) + ":" + fileN + "\n"
+                    fcount += 1
+            if ucount == 0:
+                return "No users present"
+            else:
+                print rtrn
+                return rtrn
+        except ReferenceError:
+            print "Reference error, please reset server"
+            return "Server needs reset"
 
 
 class UserFileShare:

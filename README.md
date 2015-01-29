@@ -22,3 +22,7 @@ After successfully connecting to a server you may use the following commands.
         This will obtain the associated document from the user who's id you pass.
     >q
         This will remove you from the server.
+
+Known Issues:
+    *If a user disconnects the server needs to be reset.
+        (ReferenceError: weakly-referenced object no longer exists)
