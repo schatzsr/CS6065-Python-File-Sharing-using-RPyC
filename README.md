@@ -6,11 +6,17 @@ Python File Share.
 
 Python File Share is a command line file sharing application. You may work from a server via ip or use a localhost.
 
-To run the server move server.py
+Move client.py and server.py to a directory and create a folder that will hold your files being shared and a folder that will contain your downloaded files.
 
-To run the client move client.py to a directory. Now add two folders to this directory, one will contain the files you wish to share, the other will be the location for the server to write files to.
+To run the server navigate to the correct diretory and run.
 
-Navigate to the directory containing your python file. If you are running an instance of the server on your local host execute as follows. client.py If you have an ip for another machine running a server instance execute as follows. client.py
+######server.py
+
+To run the client navigate to the correct diretory and run.
+
+######client.py shareFolderDirectory downloadFolderDirectory optionIP
+
+If the ip is blank the client will default to using localhost.
 
 After successfully connecting to a server you may use the following commands.
 
