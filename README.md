@@ -16,13 +16,11 @@ If you have an ip for another machine running a server instance execute as follo
     client.py <share_folder_name> <receive_folder_name> <ip>
 
 After successfully connecting to a server you may use the following commands.
-    ls
-        This will list the available files nested under what user has uploaded them to the server. The id for both user and document will precede the listing.
-    #<user_id>:<doc_id>
-        This will obtain the associated document from the user who's id you pass.
-    q
-        This will remove you from the server.
+
+ls - This will list the available files nested under what user has uploaded them to the server. The id for both user and document will precede the listing. \n
+#user_id>:<doc_id> - This will obtain the associated document from the user who's id you pass. \n
+q - This will remove you from the server. \n
 
 Known Issues:
-    *If a user disconnects the server needs to be reset.
-        (ReferenceError: weakly-referenced object no longer exists)
+
+    If a user disconnects the server needs to be reset.
