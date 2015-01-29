@@ -1,5 +1,7 @@
 PyFileShare
 
+Sean Schatzman and Anthony Kleiser
+
 Python File Share.
 
 Python File Share is a command line file sharing application. You may work from a server via ip or use a localhost.
