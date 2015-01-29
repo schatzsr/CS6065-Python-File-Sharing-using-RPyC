@@ -83,9 +83,14 @@ while True:
         userID = inputList[0]
         docID = inputList[1]
         fileInfo = c.root.sendFile(userID, docID)
-        fileInfo[0] = str(fileInfo[0])
-        fileName = receiveFolder + "/" + fileInfo[0]
-        receiveAndUnpack(fileInfo[1], fileName)
+        print(type(fileInfo))
+        try:
+            fileInfo[0] = str(fileInfo[0])
+            fileName = receiveFolder + "/" + fileInfo[0]
+            receiveAndUnpack(fileInfo[1], fileName)
+            print "File Retrieve Successful"
+        except TypeError:
+            print "File Retrieve Failed - please ensure valid inputs"
 
     elif userInput == "q":
         #disconnect and remove user from the server

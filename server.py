@@ -52,7 +52,6 @@ class FileshareServer:
 
     def sendFile(self, userID, docID):
         print(userID, docID)
-        docindex = 0
         uIndex = 0
         for user in self.users:
             docindex = 0
