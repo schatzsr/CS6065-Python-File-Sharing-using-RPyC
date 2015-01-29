@@ -3,23 +3,23 @@ import os
 import rpyc
 
 def showSharedFiles(directory):
-  print os.listdir(directory)
+    print os.listdir(directory)
 
 def openAndPack(filename):
     """
     Open the passed file in read-binary mode
     and write the binary to a string.
     """
-    file = open(filename, 'rb')
-    return file.read()
+    inputfile = open(filename, 'rb')
+    return inputfile.read()
 
 def receiveAndUnpack(binary, filename):
     """
     Open File to write to and write input
     binary to the new file
     """
-    file = open(filename, 'wb')
-    file.write(binary)
+    inputfile = open(filename, 'wb')
+    inputfile.write(binary)
 
 '''
 Set client variables
@@ -32,7 +32,7 @@ connected = False
 
 while True:
 
-    if(firstRun):
+    if firstRun:
 
         shareFolder = sys.argv[1]
         receiveFolder = sys.argv[2]
@@ -40,8 +40,7 @@ while True:
             print "Please enter a valid share and/or receive directory"
             break
 
-        # Connect to RPyC with input ip, if no input
-        #   ip then default to localhost.
+        # Connect to RPyC with input ip, if no input ip then default to localhost.
         if len(sys.argv) == 4:
             try:
                 c = rpyc.connect(sys.argv[3], 18861)
@@ -63,13 +62,12 @@ while True:
         # is waiting for keyboard input, start up a background listening thread.
         bgsrv = rpyc.BgServingThread(c)
 
-        # Make files in shareFolder availble to other
-        #   users by adding to the server.
+        # Make files in shareFolder available to other users by adding to the server.
         fileNames = []
         fileBins = []
-        for file in os.listdir(shareFolder):
-            fileNames.append(file)
-            fileBins.append(openAndPack(shareFolder + "/" + file))
+        for f in os.listdir(shareFolder):
+            fileNames.append(f)
+            fileBins.append(openAndPack(shareFolder + "/" + f))
         c.root.addUser(name, fileNames, fileBins)
         firstRun = False
 
@@ -88,10 +86,7 @@ while True:
         fileInfo[0] = str(fileInfo[0])
         fileName = receiveFolder + "/" + fileInfo[0]
         receiveAndUnpack(fileInfo[1], fileName)
-        #selects user
-        #selects file
-        #asks server for file using user/filename
-        #calls recieve and unpack for previous fileName and returned binary
+
     elif userInput == "q":
         #disconnect and remove user from the server
         print "You quitin' dis shit.....nah"

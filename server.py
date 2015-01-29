@@ -52,25 +52,19 @@ class FileshareServer:
 
     def sendFile(self, userID, docID):
         print(userID, docID)
-        dindex = 0
+        docindex = 0
         uIndex = 0
-        print(1)
         for user in self.users:
-            dindex = 0
-            print(2)
-            print(type(uIndex), type(userID))
+            docindex = 0
             if uIndex == int(userID):
-                print(3)
-                for file in user.getFileNames():
-                    if dindex == int(docID):
-                        print(4)
+                for f in xrange(len(user.getFileNames())):
+                    if docindex == int(docID):
                         rtrn = []
-                        rtrn.append(user.getFileNames()[dindex])
-                        rtrn.append(user.getFileBin(dindex))
-                        print (type(rtrn[0]), type(rtrn[1]))
+                        rtrn.append(user.getFileNames()[docindex])
+                        rtrn.append(user.getFileBin(docindex))
                         return rtrn
                     else:
-                        dindex += 1
+                        docindex += 1
             else:
                 uIndex += 1
 
@@ -83,8 +77,7 @@ class FileshareServer:
             rtrn += str(ucount) + ": " + name + "\n"
             ucount += 1
             for fileN in user.getFileNames():
-                rtrn += "   "
-                rtrn += str(fcount) + ":" + fileN + "\n"
+                rtrn += "   " + str(fcount) + ":" + fileN + "\n"
                 fcount += 1
         if ucount == 0:
             return "No users present"
