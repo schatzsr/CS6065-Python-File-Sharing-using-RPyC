@@ -12,7 +12,7 @@ To run the server navigate to the correct diretory and run.
 
 ######server.py
 
-To run the client navigate to the correct diretory and run.
+To run the client navigate to the correct directory and run.
 
 ######client.py shareFolderDirectory downloadFolderDirectory optionIP
 
@@ -20,11 +20,11 @@ If the ip is blank the client will default to using localhost.
 
 After successfully connecting to a server you may use the following commands.
 
-######ls - This will list the available files nested under what user has uploaded them to the server. The id for both user and document will precede the listing. \n
+######ls - This will list the available files nested under what user has uploaded them to the server. The id for both user and document will precede the listing.
 
-#######<user_id>: - This will obtain the associated document from the user who's id you pass. \n
+#######userId:docId - This will obtain the associated document from the user who's id you pass.
 
-######q - This will remove you from the server. \n
+######q - This will remove you from the server.
 
 Known Issues:
 
