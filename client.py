@@ -78,10 +78,10 @@ while True:
         display = c.root.showFiles()
         print display
     elif userInput[0] == "#":
-        userID = userInput[1]
-        print userID
-        docID = userInput[3]
-        print docID
+        removePound = userInput.replace("#", "")
+        inputList = removePound.split(":")
+        userID = inputList[0]
+        docID = inputList[1]
         fileInfo = c.root.sendFile(userID, docID)
         fileInfo[0] = str(fileInfo[0])
         fileName = receiveFolder + "/" + fileInfo[0]
