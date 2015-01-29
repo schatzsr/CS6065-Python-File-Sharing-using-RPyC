@@ -11,16 +11,16 @@ To run the client move client.py to a directory. Now add two folders to this dir
 
 Navigate to the directory containing your python file. 
 If you are running an instance of the server on your local host execute as follows.
-    >client.py <share_folder_name> <receive_folder_name>
+    client.py <share_folder_name> <receive_folder_name>
 If you have an ip for another machine running a server instance execute as follows.
-    >client.py <share_folder_name> <receive_folder_name> <ip>
+    client.py <share_folder_name> <receive_folder_name> <ip>
 
 After successfully connecting to a server you may use the following commands.
-    >ls
+    ls
         This will list the available files nested under what user has uploaded them to the server. The id for both user and document will precede the listing.
-    >#<user_id>:<doc_id>
+    #<user_id>:<doc_id>
         This will obtain the associated document from the user who's id you pass.
-    >q
+    q
         This will remove you from the server.
 
 Known Issues:
