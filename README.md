@@ -1,5 +1,7 @@
-CS6065 Intro to Cloud Computing Project 1 - Python File Sharing using RPyC
+Python File Sharing using RPyC
 ================
+
+CS6065 Intro to Cloud Computing Project 1
 
 *Cloned from University of Cincinnati's git site, github.uc.edu*
 
